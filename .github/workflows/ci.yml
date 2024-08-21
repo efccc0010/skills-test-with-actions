@@ -21,7 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Install remark and lint dependencies
+        run: npm install remark-cli remark-preset-lint-consistent
+
       - name: Run markdown lint
-        run: |
-          npm install remark-cli remark-preset-lint-consistent vfile-reporter-json
-          npx remark . --use remark-preset-lint-consistent --report vfile-reporter-json 2> remark-lint-report.json
+        run: npx remark . --use remark-preset-lint-consistent --frail
+
